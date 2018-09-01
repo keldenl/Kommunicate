@@ -1,0 +1,27 @@
+{
+  "name": "translator-kelden-japanese",
+  "version": "1.0.0",
+  "description": "Translates English to Japanese using Kelden's voice.",
+  "main": "app.js",
+  "scripts": {
+    "test": "index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/keldenl/translator-kelden-japanese.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/keldenl/translator-kelden-japanese/issues"
+  },
+  "homepage": "https://github.com/keldenl/translator-kelden-japanese#readme",
+  "dependencies": {
+    "google-translate-api": "^2.3.0",
+    "howler": "^2.0.14",
+    "kuroshiro": "^1.0.0-rc.1",
+    "kuroshiro-analyzer-kuromoji": "^1.0.0",
+    "transliteration": "^1.6.6",
+    "wanakana": "^4.0.1"
+  }
+}

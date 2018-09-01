@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Kommunicate</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+	<script src="lib/howler.js"></script>
+	<script src="https://unpkg.com/translate@1"></script>
+
+	<script src="lib/kuroshiro.js"></script>
+	<script src="lib/KuromojiAnalyzer.js"></script>
+</head>
+<body>
+	<script src="app.js"></script>
+	<script src="translate.js"></script>
+
+	<script type="text/javascript">
+		function play(n) {
+			console.log(parseInt(n))
+			sound.playJapanese(convertNumberToHun(parseInt(n)))
+		}
+	</script>
+
+<!--
+	<input type="number" id="inputText" name="inputText">
+	<input type="button" value="Say Number" 
+  onclick="play(document.getElementById('inputText').value)" />
+  <br><br>
+-->
+<h1>Kommunicate</h1>
+<hr/>
+<div class="container">
+    <input type="text" id="translateText"/>
+<input type="button" value="Translate" onclick="translateToJapanese(document.getElementById('translateText').value, document.getElementById('outputTranslate'))"/>
+<p id="outputTranslate"></p>
+ 
+</div>
+
+</body>
+</html>
