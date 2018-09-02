@@ -200,8 +200,10 @@ function translateToJapanese(userInput, outputId) {
 	    	console.log("Pronunciation")
 	        console.log(result);
 	        result = hiraToArray(result);
+            var displayResult = result.join("");
+            displayResult = displayResult.replace(/--/g, " ")
             var romanji = document.createElement("SPAN");
-            romanji.innerHTML = result;
+            romanji.innerHTML = displayResult;
 	        outputId.append(romanji);
 	        sound.playJapanese(result);
 	    })
