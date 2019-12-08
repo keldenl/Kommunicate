@@ -8,7 +8,7 @@ Same. I thought about it one day and realized that due to the nature of the Japa
 
 # Demo
 
-*Video coming soon...*
+[![Kommunicate Demo](https://img.youtube.com/vi/vl42R5v-UBc/0.jpg)](https://www.youtube.com/watch?v=vl42R5v-UBc)
 
 # An Issue..
 
