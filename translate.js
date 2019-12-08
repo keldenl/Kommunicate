@@ -1,3 +1,6 @@
+//var config = require('./config.js');
+//const Kuroshiro = require('./lib/kuroshiro.js');
+
 /*
 ** Speaking Section
 ** This is how to speak the translation
@@ -124,7 +127,7 @@ var spriteSheet = {
 	"--": [116000, 350]
 }
 
-var speed = 1;
+var speed = 1.5;
 var html5 = true;
 
 var sound = new Howl({
@@ -146,7 +149,7 @@ Howl.prototype.playJapanese = function(arr) {
     }
     
     if (last) {
-        console.log(arr);
+        // console.log(arr);
         console.log("PLAY: ", currentLetter)
         this.play(currentLetter)
     }
@@ -164,7 +167,7 @@ Howl.prototype.playJapanese = function(arr) {
             nextSound.playJapanese(arr);
         });
 
-        console.log(arr);
+        // console.log(arr);
         console.log("PLAY: ", currentLetter)
         nextSound.play(currentLetter)
     }
@@ -184,30 +187,38 @@ translate.engine = 'google';
 translate.key = config.GOOGLE_API_KEY;
 
 
+
 function translateToJapanese(userInput, outputId) {
-	var kuroshiro = new Kuroshiro();
-	outputId.innerHTML = "";
+	outputId.innerHTML = "Thinking...";
 
 	translate(userInput, 'ja').then(text => {
-		console.log(text);
-        outputId.innerHTML += text + "<br/>";
-		kuroshiro.init(new KuromojiAnalyzer({ dictPath: "/dict" }))
-	    .then(function () {
-	        return kuroshiro.convert(text, { to: "romaji", mode: "spaced" });
-	    })
+		var kuroshiro = new Kuroshiro();
 
-	    .then(function(result){
-	    	console.log("Pronunciation")
-	        console.log(result);
-	        result = hiraToArray(result);
-            var displayResult = result.join("");
-            displayResult = displayResult.replace(/--/g, " ")
-            var romanji = document.createElement("SPAN");
-            romanji.innerHTML = displayResult;
-	        outputId.append(romanji);
-	        sound.playJapanese(result);
-	    })
+		console.log(kuroshiro);
+		console.log("Loading dict...");
+		kuroshiro.init(new KuromojiAnalyzer({ dictPath: "dict" }))
+		.then(function() {
+			console.log("Dict loaded!");
+			console.log("returning the kuroshiro~");
+			console.log()
+			return kuroshiro.convert(text, { to: "romaji", mode: "spaced" });
+		}) 
+		.then(function(result) {
+			outputId.innerHTML = "";
 
+			console.log(text);
+			outputId.innerHTML += text + "<br/>";
+
+			console.log("Pronunciation")
+			console.log(result);
+			result = hiraToArray(result);
+			var displayResult = result.join("");
+			displayResult = displayResult.replace(/--/g, " ")
+			var romanji = document.createElement("SPAN");
+			romanji.innerHTML = displayResult;
+			outputId.append(romanji);
+			sound.playJapanese(result);
+		})
 	});
 }
 
@@ -222,11 +233,11 @@ function hiraToArray(hiragana) {
 	// Loop through the whole hiragana
 	var k = 0;
 	for (var i = 3; i > 0; i--) {
-		console.log(hiragana);
+		// console.log(hiragana);
 		var currSub = hiragana.substring(0, i);
-		console.log(k + ":" + (i+k) + " " + currSub)
+		// console.log(k + ":" + (i+k) + " " + currSub)
 		if (hiraganaAlphabet.indexOf(currSub) > -1) {
-			console.log("FOUND ONE");
+			// console.log("FOUND ONE");
 			returnArr.push(currSub);
 			hiragana = hiragana.substring(i);
 			i = 4;
@@ -235,11 +246,3 @@ function hiraToArray(hiragana) {
 
 	return returnArr
 }
-
-
-
-
-
-
-
-

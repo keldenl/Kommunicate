@@ -40,6 +40,8 @@ input[type="text"]:focus {
     border-color: #b6b5b5;
 }
 
+input[type="button"], input[type=submit], input[type=Reset]{ -webkit-appearance:none; }
+
 input[type="button"] {
     width: 70px;
     color: white;

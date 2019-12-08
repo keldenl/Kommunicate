@@ -4,7 +4,8 @@
   "description": "Translates English to Japanese using Kelden's voice.",
   "main": "app.js",
   "scripts": {
-    "test": "index.html"
+    "serve": "http-server",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -18,11 +19,16 @@
   "homepage": "https://github.com/keldenl/translator-kelden-japanese#readme",
   "dependencies": {
     "google-translate-api": "^2.3.0",
-    "howler": "^2.0.14",
-    "kuroshiro": "^1.0.0-rc.1",
-    "kuroshiro-analyzer-kuromoji": "^1.0.0",
+    "howler": "^2.0.15",
+    "kuroshiro": "^1.1.1",
+    "kuroshiro-analyzer-kuromoji": "^1.1.0",
     "safe-eval": "^0.4.1",
     "transliteration": "^1.6.6",
-    "wanakana": "^4.0.1"
+    "wanakana": "^4.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^6.7.2",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
   }
 }
